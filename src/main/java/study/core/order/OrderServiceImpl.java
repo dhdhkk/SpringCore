@@ -13,7 +13,7 @@ import study.core.member.MemberRepository;
 import study.core.member.MemoryMemberRepository;
 
 @Component
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -26,6 +26,10 @@ public class OrderServiceImpl implements OrderService{
     @MainDiscountPolicy
     private final DiscountPolicy discountPolicy;
 
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy  DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
     //@Autowired // @Autowired 를 사용하면 생성자에서 여러 의존관계도 한번에 주입받을 수 있다.
 //    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
 //        this.memberRepository = memberRepository;
